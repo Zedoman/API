@@ -13,7 +13,7 @@ function ResetPasswordPage() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5001/api/users/reset-password-confirm', {
+      const response = await axios.post('http://54.80.9.36/api/users/reset-password-confirm', {
         token,
         newPassword
       });
