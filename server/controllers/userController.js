@@ -108,7 +108,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     });
 
     // Create reset URL (change this to your frontend reset password page)
-    const resetUrl = `http://localhost:3000/reset-password?token=${resetToken}`;
+    const resetUrl = `https://api-three-gray.vercel.app/reset-password?token=${resetToken}`;
 
     // Send email with reset link
     const transporter = nodemailer.createTransport({
