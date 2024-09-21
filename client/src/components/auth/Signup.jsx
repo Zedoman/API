@@ -127,7 +127,7 @@ const Signup = ({ onClose, onSignup }) => {
             {loading ? "Processing..." : "Sign Up"}
           </button>
         </div>
-        <a href="hhttp://54.80.9.36/api/users/google">
+        <a href="https://api-cqq1.onrender.com/api/users/google">
           <button className="inline-flex items-center rounded-full px-4 py-2 text-white bg-red-900 relative top-1">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png"

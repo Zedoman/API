@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.883b22c8.css",
-    "main.js": "/static/js/main.f3407a2b.js",
+    "main.js": "/static/js/main.8ba2a1b1.js",
     "static/js/213.2d06e9fa.chunk.js": "/static/js/213.2d06e9fa.chunk.js",
     "static/js/732.95fbfc31.chunk.js": "/static/js/732.95fbfc31.chunk.js",
     "static/js/453.258b012d.chunk.js": "/static/js/453.258b012d.chunk.js",
@@ -15,13 +15,13 @@
     "static/media/urbanist-latin-ext-400-normal.woff2": "/static/media/urbanist-latin-ext-400-normal.fbda94a57fe760744c0e.woff2",
     "index.html": "/index.html",
     "main.883b22c8.css.map": "/static/css/main.883b22c8.css.map",
-    "main.f3407a2b.js.map": "/static/js/main.f3407a2b.js.map",
+    "main.8ba2a1b1.js.map": "/static/js/main.8ba2a1b1.js.map",
     "213.2d06e9fa.chunk.js.map": "/static/js/213.2d06e9fa.chunk.js.map",
     "732.95fbfc31.chunk.js.map": "/static/js/732.95fbfc31.chunk.js.map",
     "453.258b012d.chunk.js.map": "/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.883b22c8.css",
-    "static/js/main.f3407a2b.js"
+    "static/js/main.8ba2a1b1.js"
   ]
 }

@@ -9,11 +9,12 @@ function ResetPasswordPage() {
   const query = new URLSearchParams(location.search);
   const token = query.get('token'); // Extract token from URL
 
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://54.80.9.36/api/users/reset-password-confirm', {
+      const response = await axios.post(`${apiUrl}/api/users/reset-password-confirm`, {
         token,
         newPassword
       });
