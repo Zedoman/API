@@ -170,7 +170,18 @@ const Signin = ({ onClose, onLogin }) => {
             </button>
           </div>
         </div>
+        <a href="https://api-cqq1.onrender.com/api/users/google">
+          <button className="inline-flex items-center rounded-full px-4 py-2 text-white bg-red-900 relative top-1">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png"
+              alt="Google logo"
+              className="w-10 h-4 mr-5"
+            />
+            signin with Google
+          </button>
+        </a>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

@@ -134,7 +134,7 @@ const Signup = ({ onClose, onSignup }) => {
               alt="Google logo"
               className="w-10 h-4 mr-5"
             />
-            Login with Google
+            signup with Google
           </button>
         </a>
       </div>

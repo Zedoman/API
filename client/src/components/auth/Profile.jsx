@@ -111,11 +111,11 @@ const Popup = ({ onClose, onSignup }) => {
             <div className="text-left">
               <img className='flex pl-6 pt-6' src='/assets/profile.svg' alt="Profile"/>
               <p className="mt-2 pl-6 text-md font-medium text-black sm:text-[20px]">
-                {userName ? `Hi ${userName}, welcome to iGalaxy` : "Hi there, welcome to iGalaxy"}
+                {userName ? `Hi ${userName}, welcome to MUTAENGINE` : "Hi there, welcome to MUTAENGINE"}
               </p>
               {!userName && (
                 <p className="text-base pl-6 text-gray-500 leading-7 text-[25px]">
-                  Looks like you are new to iGalaxy
+                  Looks like you are new to MUTAENGINE
                 </p>
               )}
               
@@ -157,13 +157,6 @@ const Popup = ({ onClose, onSignup }) => {
                   </button>
                   <FaAngleRight />
                 </li>
-                {/* <li onClick={() => handleRedirect('/address')} className="flex cursor-pointer hover:bg-slate-50 items-center p-6">
-                  <FaMapMarkerAlt className="mr-4" />
-                  <button className="flex-grow text-left">
-                    Address
-                  </button>
-                  <FaAngleRight />
-                </li> */}
               </ul>
             </div>
           </div>
