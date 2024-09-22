@@ -42,7 +42,7 @@ function AppContent() {
         <Route path="/NewReleases" element={<NewReleases />} />
         <Route path="/Footer" element={<Footer />} />
         <Route path="/Store" element={<Store />} />
-        <Route path="/Checkout2" element={<Check />} />
+        <Route path="/Checkout" element={<Check />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/order" element={<Order />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />

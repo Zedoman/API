@@ -102,7 +102,7 @@ const ProductDetails = () => {
 
       localStorage.setItem("buyNowItem", JSON.stringify(item));
 
-      navigate("/checkout2", {
+      navigate("/checkout", {
         state: {
           //totalAmount: selectedCombination.discounted_price,
           //cartItems: [item]

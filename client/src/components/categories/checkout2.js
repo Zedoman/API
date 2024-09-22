@@ -19,29 +19,12 @@ const BUYNOWCheckoutPage = () => {
     fcontactNumber: ""
   });
   const [otpSent, setOtpSent] = useState(false);
-  const [productId, setProductId] = useState('');
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedStorage, setSelectedStorage] = useState('');
   const [otpChecked, setOtpChecked] = useState(false);
   const [shippingMethod, setShippingMethod] = useState("standard");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [pincode, setPincode] = useState("");
-  const [promoCode, setPromoCode] = useState("");
-  const [totals, setTotals] = useState({
-    subtotal: 0,
-    discount: 0,
-    delivery: 0,
-    tax: 0,
-    total: 0,
-  });
   //const [amount, setAmount] = useState(totalAmount);
   const [loading, setLoading] = useState(false);
   const [isCODAvailable, setIsCODAvailable] = useState(false);
@@ -67,7 +50,6 @@ const BUYNOWCheckoutPage = () => {
   useEffect(() => {
     const isDisabled =
       //!contactNumber ||
-      !otp ||
       // !email ||
       !shippingDetails.firstName ||
       !shippingDetails.lastName ||
@@ -81,7 +63,6 @@ const BUYNOWCheckoutPage = () => {
     setLoading(isDisabled); // Disable button based on the condition
   }, [
     //contactNumber,
-    otp,
     //email,
     shippingDetails.firstName,
     shippingDetails.lastName,
@@ -106,60 +87,7 @@ const BUYNOWCheckoutPage = () => {
     return <div>Loading...</div>;
   }
 
-  const handleSendOtp = async () => {
-    try {
-      const fcontactNumber = shippingDetails.fcontactNumber;
-      const apiUrl = process.env.REACT_APP_API_URL;
-      const response = await axios.post(
-        `${apiUrl}/api/users/otp-checker`,
-        { fcontactNumber }
-      );
-
-      if (response.data && response.data.message === "OTP sent") {
-        setOtpSent(true);
-        setAlertMessage("OTP sent to your contact number.");
-      } else {
-        setAlertMessage(
-          response.data.message || "Failed to send OTP. Please try again."
-        );
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      setAlertMessage("Failed to send OTP. Please try again.");
-    }
-  };
-
-  const handleCheckOtp = async () => {
-    const fcontactNumber = shippingDetails.fcontactNumber;
-    setLoading(true);
-    setError("");
-    setAlertMessage(""); // Clear previous alert messages
-    try {
-      const apiUrl = process.env.REACT_APP_API_URL;
-      const response = await axios.post(
-        `${apiUrl}/api/users/otp-veri`,
-        { fcontactNumber, otp }
-      );
-      console.log("OTP Verified:", response.data);
-      setOtpChecked(true);
-      setLoading(false);
-      setAlertMessage("OTP Verified successfully.");
-    } catch (error) {
-      setLoading(false);
-      console.error(
-        "Error verifying OTP:",
-        error.response ? error.response.data : error.message
-      );
-      setError("Failed to verify OTP");
-    }
-  };
-
-  const handleResendOtp = () => {
-    setOtpSent(false);
-    setOtpChecked(false);
-    setOtp("");
-    handleSendOtp();
-  };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -236,6 +164,7 @@ const BUYNOWCheckoutPage = () => {
   const paymentHandler = async (e) => {
     //amount = (buyNowItem.discountedPrice + (buyNowItem.discountedPrice * 0.1) + 5).toFixed(2)
     e.preventDefault();
+    
     if (paymentMethod === "COD") {
       toast.success("Your order has been placed. You can pay on delivery.");
       alert("Your order has been placed. You can pay on delivery.");
@@ -392,7 +321,7 @@ const BUYNOWCheckoutPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setShippingDetails({ ...shippingDetails, [name]: value });
-    if (name === "state" && value === "West Bengal") {
+    if (name === "state") {
       setIsCODAvailable(true);
     } else if (name === "state") {
       setIsCODAvailable(false);
@@ -419,14 +348,6 @@ const BUYNOWCheckoutPage = () => {
                 <label className="block text-gray-700">
                   Mobile Number<span className="text-black">*</span>
                 </label>
-                <button
-                  type="button"
-                  className="text-blue-700"
-                  onClick={handleSendOtp}
-                  disabled={otpSent}
-                >
-                  Send OTP
-                </button>
               </div>
               <input
               type="tel"
@@ -435,45 +356,10 @@ const BUYNOWCheckoutPage = () => {
               value={shippingDetails.fcontactNumber}
               onChange={handleChange}
               placeholder="Enter Mobile Number"
-              disabled={otpSent}
               required
             />
             </div>
 
-            <div className="mb-4 md:w-1/2">
-              <div className="flex justify-between">
-                <label className="block text-gray-700">
-                  OTP sent to Mobile<span className="text-black">*</span>
-                </label>
-                <div className="flex gap-3 text-right">
-                  <button
-                    type="button"
-                    className="text-blue-600"
-                    onClick={handleCheckOtp}
-                  // disabled={!otpSent || otpChecked}
-                  >
-                    Verify
-                  </button>
-                  <button
-                    type="button"
-                    className="text-blue-600"
-                    onClick={handleResendOtp}
-                  >
-                    Resend
-                  </button>
-                </div>
-              </div>
-
-              <input
-                type="text"
-                className="w-full px-4 py-2 border rounded-xl"
-                value={otp}
-                placeholder="Enter OTP"
-                onChange={(e) => setOtp(e.target.value)}
-                required
-              // disabled={!otpSent || otpChecked}
-              />
-            </div>
           </div>
 
 
