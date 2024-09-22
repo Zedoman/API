@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const Popup = ({ onClose, onSignup }) => {
   const [isSigninOpen, setIsSigninOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
-  const [isAddressOpen, setIsAddressOpen] = useState(false);
   const [userName, setUserName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
@@ -20,14 +19,12 @@ const Popup = ({ onClose, onSignup }) => {
   const handleOpenSignin = () => {
     setIsSigninOpen(true);
     setIsSignupOpen(false);
-    setIsAddressOpen(false);
     toast.info("Opening Sign In");
   };
 
   const handleOpenSignup = () => {
     setIsSignupOpen(true);
     setIsSigninOpen(false);
-    setIsAddressOpen(false);
     toast.info("Opening Sign Up");
   };
 
@@ -51,10 +48,14 @@ const Popup = ({ onClose, onSignup }) => {
   };
   
   const handleSignup = async (user) => {
-    localStorage.setItem('user', JSON.stringify(user));
+    if (user && user.name) {
+      localStorage.setItem('user', JSON.stringify(user));
     setUserName(user.name);
     setIsSignup(true);
-    setIsSignupOpen(false); // Close signin popup upon successful login
+    setIsSignupOpen(false);
+    } else {
+      console.log('User name not found');
+    }
   };
 
   const handleLogout = async () => {
@@ -106,7 +107,7 @@ const Popup = ({ onClose, onSignup }) => {
   return (
     <div className="fixed top-14 right-8 font-urbanist w-80 z-50" ref={popupRef}>
       <div className="bg-white rounded-lg shadow-md">
-        {!isSigninOpen && !isSignupOpen && !isAddressOpen && (
+        {!isSigninOpen && !isSignupOpen  && (
           <div>
             <div className="text-left">
               <img className='flex pl-6 pt-6' src='/assets/profile.svg' alt="Profile"/>
