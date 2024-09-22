@@ -18,12 +18,9 @@ const BUYNOWCheckoutPage = () => {
     femail: "",
     fcontactNumber: ""
   });
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpChecked, setOtpChecked] = useState(false);
   const [shippingMethod, setShippingMethod] = useState("standard");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [contactNumber, setContactNumber] = useState("");
-  const [otp, setOtp] = useState("");
   const [email, setEmail] = useState("");
   //const [amount, setAmount] = useState(totalAmount);
   const [loading, setLoading] = useState(false);
